@@ -25,6 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/auth.routes')(app);
+require('./routes/billing.routes')(app);
 
 // app.get('/', (req, res) => {
 //   res.send({ message: "welcome to summoner's rift" });
