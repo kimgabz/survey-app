@@ -1,7 +1,10 @@
-const Survey = require('../models/Survey');
 const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
+
+const Mailer = require('../services/Mailer');
+const mongoose = require('mongoose');
+const Survey = mongoose.model('surveys');
 
 module.exports = (app) => {
   app.get('/api/surveys/thanks', (req, res) => {
