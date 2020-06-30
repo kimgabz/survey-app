@@ -3,16 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "jest": {
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "./tests/setup.js"
+    ]
+  },
   "engine": {
     "node": "12.16.3",
     "npm": "6.14.5"
   },
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js",
+    "server": "nodemon index.js --ignore tests",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server \" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "test": "jest --detectOpenHandles"
   },
   "author": "Kim Gabiana",
   "license": "ISC",
@@ -21,12 +28,14 @@
     "concurrently": "^5.2.0",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
+    "jest": "^24.9.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.18",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "path-parser": "^6.1.0",
+    "puppeteer": "^4.0.1",
     "sendgrid": "^5.2.3",
     "stripe": "^8.63.0"
   }
